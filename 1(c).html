@@ -1,39 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hyperlinks Example</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Images linking to profiles</title>
+
+  <style>
+    /* small style to align images and add spacing */
+    .container {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+      padding: 24px;
+      font-family: Arial, sans-serif;
+    }
+
+    .profile {
+      text-align: center;
+      width: 160px;
+    }
+
+    .profile img {
+      display: block;
+      border-radius: 8px;
+      object-fit: cover;
+      width: 150px;
+      height: 150px;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+    }
+
+    .caption {
+      margin-top: 8px;
+      font-size: 14px;
+    }
+  </style>
 </head>
 
 <body>
+  <div class="container">
 
-    <h1>Hyperlinks Example</h1>
+    <!-- YOUR PROFILE -->
+    <div class="profile">
+      <a href="https://example.com/your-profile" target="_blank" rel="noopener noreferrer" title="Go to my profile">
+        <img src="Male.png" alt="Your Name" />
+      </a>
+      <div class="caption">Your Name</div>
+    </div>
 
-    <!-- Text link -->
-    <p>
-        Visit our official website:
-        <a href="https://www.aec.edu.in/" target="_blank">AEC Website</a>
-    </p>
+    <!-- FRIEND'S PROFILE -->
+    <div class="profile">
+      <a href="https://example.com/friend-profile" target="_blank" rel="noopener noreferrer" title="Go to friend's profile">
+        <img src="female.jpg" alt="Friend's Name" />
+      </a>
+      <div class="caption">Friend's Name</div>
+    </div>
 
-    <!-- Image link -->
-    <p>
-        Click the image to see our gallery:
-        <a href="https://www.aec.edu.in/?p=Gallery" target="_blank">
-            <img src="https://www.aec.edu.in/wp-content/uploads/2020/10/logo.png"
-                 alt="AEC Gallery"
-                 width="200">
-        </a>
-    </p>
-
-    <!-- Explanation -->
-    <p><strong>Explanation:</strong></p>
-    <ul>
-        <li><strong>href</strong>: Specifies the URL of the page to link to.</li>
-        <li><strong>target="_blank"</strong>: Opens the link in a new tab/window.</li>
-        <li>You can use text or an image inside the <code>&lt;a&gt;</code> tag to create a clickable link.</li>
-    </ul>
-
+  </div>
 </body>
 </html>

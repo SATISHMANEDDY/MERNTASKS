@@ -1,33 +1,35 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Larger Number</title>
+    <title>Loops in JavaScript</title>
 </head>
 
 <body>
 
-<script>
-    let a = parseInt(prompt("Enter first number:"));
-    let b = parseInt(prompt("Enter second number:"));
-    let c = parseInt(prompt("Enter third number:"));
+    <h3>For Loop</h3>
+    <script>
+        for (let i = 1; i <= 10; i++) {
+            document.write(i + " ");
+        }
+    </script>
 
-    if (a > b && a > c) {
-        document.write(a + " is the LARGEST NUMBER");
-        alert(a + " is the LARGEST NUMBER");
-    } 
-    else if (b > a && b > c) {
-        document.write(b + " is the LARGEST NUMBER");
-        alert(b + " is the LARGEST NUMBER");
-    } 
-    else if (c > a && c > b) {
-        document.write(c + " is the LARGEST NUMBER");
-        alert(c + " is the LARGEST NUMBER");
-    } 
-    else {
-        document.write("Numbers are EQUAL");
-        alert("Numbers are EQUAL");
-    }
-</script>
+    <h3>While Loop</h3>
+    <script>
+        let j = 1;
+        while (j <= 10) {
+            document.write(j + " ");
+        j++;
+        }
+    </script>
+
+    <h3>Do-While Loop</h3>
+    <script>
+        let k = 1;
+        do {
+            document.write(k + " ");
+            k++;
+        } while (k <= 10);
+    </script>
 
 </body>
 </html>

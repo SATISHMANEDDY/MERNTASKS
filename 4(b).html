@@ -1,36 +1,33 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>JavaScript Objects Demo</title>
+    <title>Larger Number</title>
 </head>
 
 <body>
 
-    <h3>JavaScript Pre-defined Objects</h3>
-    <p id="result"></p>
+<script>
+    let a = parseInt(prompt("Enter first number:"));
+    let b = parseInt(prompt("Enter second number:"));
+    let c = parseInt(prompt("Enter third number:"));
 
-    <script>
-        // Window Object
-        window.alert("Welcome to JavaScript Objects Program");
-        let name = window.prompt("Enter your name:");
-
-        // String Object
-        let upperName = name.toUpperCase();
-        let lengthOfName = name.length;
-
-        // Math Object
-        let number = 25;
-        let sqrtValue = Math.sqrt(number);
-        let powerValue = Math.pow(5, 2);
-
-        // Document Object
-        document.getElementById("result").innerHTML =
-            "Name: " + name + "<br>" +
-            "Uppercase Name: " + upperName + "<br>" +
-            "Length of Name: " + lengthOfName + "<br>" +
-            "Square Root of 25: " + sqrtValue + "<br>" +
-            "5 Power 2: " + powerValue;
-    </script>
+    if (a > b && a > c) {
+        document.write(a + " is the LARGEST NUMBER");
+        alert(a + " is the LARGEST NUMBER");
+    } 
+    else if (b > a && b > c) {
+        document.write(b + " is the LARGEST NUMBER");
+        alert(b + " is the LARGEST NUMBER");
+    } 
+    else if (c > a && c > b) {
+        document.write(c + " is the LARGEST NUMBER");
+        alert(c + " is the LARGEST NUMBER");
+    } 
+    else {
+        document.write("Numbers are EQUAL");
+        alert("Numbers are EQUAL");
+    }
+</script>
 
 </body>
 </html>

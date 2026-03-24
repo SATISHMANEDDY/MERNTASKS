@@ -1,90 +1,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>CSS Selector Forms</title>
+    <title>Internal and External JavaScript</title>
 
-    <style>
-        /* Page background */
-        body {
-            background-color: #f2f6ff;
+    <!-- Internal JavaScript: alert() displays a popup message -->
+    <script>
+        function internalMessage() {
+            alert("This is Internal JavaScript");
         }
-
-        /* ============================= */
-        /* SIMPLE SELECTORS */
-        /* ============================= */
-
-        /* Element Selector */
-        p {
-            color: blue;
-        }
-
-        /* ID Selector */
-        #main-title {
-            color: darkred;
-            text-align: center;
-        }
-
-        /* Class Selector */
-        .highlight {
-            background-color: lightyellow;
-        }
-
-        /* Group Selector */
-        h2, h3 {
-            color: green;
-        }
-
-        /* Universal Selector */
-        * {
-            font-family: Arial, sans-serif;
-        }
-
-        /* ============================= */
-        /* COMBINATOR SELECTORS */
-        /* ============================= */
-
-        /* Descendant Selector */
-        div p {
-            font-style: italic;
-        }
-
-        /* Child Selector */
-        div > span {
-            color: purple;
-            font-weight: bold;
-        }
-
-        /* Adjacent Sibling Selector */
-        h3 + p {
-            color: orange;
-        }
-
-        /* General Sibling Selector */
-        h3 ~ p {
-            background-color: #e0e0e0;
-        }
-    </style>
+    </script>
 </head>
 
 <body>
 
-    <h1 id="main-title">CSS Selector Demonstration</h1>
+    <h1>JavaScript Embedding Example</h1>
 
-    <h2>Simple Selectors</h2>
-    <p>This paragraph uses Element Selector</p>
-    <p class="highlight">This paragraph uses Class Selector</p>
+    <button onclick="internalMessage()">
+        Internal JavaScript
+    </button>
 
-    <h3>Group Selector Example</h3>
-    <div>
-        <p>Descendant Selector applied here</p>
-        <span>Child Selector applied here</span>
-    </div>
+    <br><br>
 
-    <h2>Combinator Selectors</h2>
-    <h3>Adjacent and General Sibling</h3>
-    <p>This paragraph is adjacent sibling</p>
-    <p>This paragraph is general sibling</p>
-    <p>This paragraph is also general sibling</p>
+    <button onclick="externalMessage()">
+        External JavaScript
+    </button>
+
+    <!-- External JavaScript -->
+    <script src="script.js"></script>
 
 </body>
 </html>

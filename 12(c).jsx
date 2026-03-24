@@ -1,18 +1,35 @@
-function Child(props) {
-  return (
-    <div>
-      <h2>Student Name: {props.name}</h2>
-      <h3>Course: {props.course}</h3>
-    </div>
-  );
-}
+import { useState } from "react";
 
 function App() {
+
+  const [task, setTask] = useState("");
+  const [tasks, setTasks] = useState([]);
+
+  const addTask = () => {
+    if (task.trim() === "") return; // avoid empty tasks
+    setTasks([...tasks, task]);
+    setTask("");
+  };
+
   return (
     <div>
-      <h1>Sharing Data Between Components</h1>
 
-      <Child name="Manikanta" course="ReactJS" />
+      <h1>To-Do List</h1>
+
+      <input
+        type="text"
+        value={task}
+        onChange={(e) => setTask(e.target.value)}
+        placeholder="Enter task"
+      />
+
+      <button onClick={addTask}>Add</button>
+
+      <ol>
+        {tasks.map((t, index) => (
+          <li key={index}>{t}</li>
+        ))}
+      </ol>
 
     </div>
   );

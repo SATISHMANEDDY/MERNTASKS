@@ -1,8 +1,13 @@
 function App() {
+
+  const name = "Manikanta";
+  const marks = 85;
+
   return (
     <div>
-      <h1>Welcome to React</h1>
-      <p>This HTML is rendered using React.</p>
+      <h1>Hello {name}</h1>
+      <h2>Your Marks: {marks}</h2>
+      <h3>{marks > 50 ? "Pass" : "Fail"}</h3>
     </div>
   );
 }

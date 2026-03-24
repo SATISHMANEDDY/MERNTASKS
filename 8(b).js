@@ -1,37 +1,60 @@
 const express = require('express');
 const session = require('express-session');
-const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
 
 const app = express();
 const PORT = 3000;
 
-app.use(cookieParser());
+// middleware
+app.use(bodyParser.urlencoded({ extended: true }));
 
-// session middleware
 app.use(session({
     secret: "mysecretkey",
     resave: false,
-    saveUninitialized: true
+    saveUninitialized: false
 }));
 
-// home route
+// login page
 app.get('/', (req, res) => {
-    if (req.session.views) {
-        req.session.views++;
-        res.send(`Visited ${req.session.views} times`);
+    res.send(`
+        <h2>Login Page</h2>
+        <form method="POST" action="/login">
+            <input type="text" name="username" placeholder="Username" required /><br><br>
+            <input type="password" name="password" placeholder="Password" required /><br><br>
+            <button type="submit">Login</button>
+        </form>
+    `);
+});
+
+// login authentication
+app.post('/login', (req, res) => {
+    const { username, password } = req.body;
+
+    // sample credentials
+    if (username === "admin" && password === "1234") {
+        req.session.user = username;
+        res.send("Login successful <br><a href='/dashboard'>Go to Dashboard</a>");
     } else {
-        req.session.views = 1;
-        res.send("Welcome! First visit");
+        res.send("Invalid username or password");
     }
 });
 
-// destroy session
+// protected page
+app.get('/dashboard', (req, res) => {
+    if (req.session.user) {
+        res.send(`Welcome ${req.session.user} <br><a href='/logout'>Logout</a>`);
+    } else {
+        res.send("Please login first");
+    }
+});
+
+// logout
 app.get('/logout', (req, res) => {
     req.session.destroy(() => {
-        res.send("Session ended");
+        res.send("Logged out successfully");
     });
 });
 
 app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
+    console.log("Server running on http://localhost:3000");
 });

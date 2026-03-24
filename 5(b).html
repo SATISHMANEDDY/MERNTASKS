@@ -1,54 +1,14 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Factorial and Fibonacci</title>
-</head>
+const http = require('http');
 
-<body>
+// Create Web Server
+const server = http.createServer((req, res) => {
+    res.writeHead(200, { 'Content-Type': 'text/html' });
+    res.write('<h2>Node.js Web Server</h2>');
+    res.write('<p>JavaScript code executed on the server</p>');
+    res.end();
+});
 
-    <h3>Factorial and Fibonacci Series</h3>
-
-    Enter a number:
-    <input type="number" id="num">
-    <button onclick="calculate()">Calculate</button>
-
-    <p id="result"></p>
-
-    <script>
-        // Function to calculate factorial
-        function factorial(n) {
-            let fact = 1;
-            for (let i = 1; i <= n; i++) {
-                fact *= i;
-            }
-            return fact;
-        }
-
-        // Function to generate Fibonacci series
-        function fibonacci(n) {
-            let a = 0, b = 1, temp;
-            let series = "0 1 ";
-
-            for (let i = 2; i < n; i++) {
-                temp = a + b;
-                series += temp + " ";
-                a = b;
-                b = temp;
-            }
-            return series;
-        }
-
-        function calculate() {
-            let n = parseInt(document.getElementById("num").value);
-
-            let factResult = factorial(n);
-            let fibResult = fibonacci(n);
-
-            document.getElementById("result").innerHTML =
-                "Factorial of " + n + " is: " + factResult + "<br>" +
-                "Fibonacci Series: " + fibResult;
-        }
-    </script>
-
-</body>
-</html>
+// Server listens on port 3000
+server.listen(3000, () => {
+    console.log("Server running at http://localhost:3000");
+});

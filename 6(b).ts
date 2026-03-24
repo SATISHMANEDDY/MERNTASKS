@@ -1,22 +1,32 @@
 // Simple Types
 let studentId: number = 101;
-let studentName: string = "Rahul";
+let studentName: string = "Manikanta";
 let isPresent: boolean = true;
+
+let marks: number[] = [85, 90, 88];  // Array
+let studentInfo: [number, string] = [101, "Kalyan"]; // Tuple
 
 // Special Types
 let valueAny: any = "Hello";
-valueAny = 123;   // allowed
+valueAny = 123;  // Allowed
 
 let valueUnknown: unknown = "TypeScript";
+// valueUnknown.toUpperCase(); // Error without type check
 
-// void type (used in functions)
-function displayMessage(): void {
-    console.log("Welcome to TypeScript");
-}
+let resultVoid: void;
+resultVoid = undefined;
 
-// null and undefined
 let emptyValue: null = null;
 let notAssigned: undefined = undefined;
 
-// Function call
-displayMessage();
+// Never type example
+function throwError(message: string): never {
+    throw new Error(message);
+}
+
+// Output
+console.log("ID:", studentId);
+console.log("Name:", studentName);
+console.log("Present:", isPresent);
+console.log("Marks:", marks);
+console.log("Student Info:", studentInfo);

@@ -7,29 +7,28 @@ const PORT = 3000;
 
 app.use(cookieParser());
 
-// Session setup
+// session middleware
 app.use(session({
     secret: "mysecretkey",
     resave: false,
     saveUninitialized: true
 }));
 
-// Home route
+// home route
 app.get('/', (req, res) => {
     if (req.session.views) {
         req.session.views++;
-        res.send(`Visited ${req.session.views} times <br>
-                  <a href="/logout">Logout</a>`);
+        res.send(`Visited ${req.session.views} times`);
     } else {
         req.session.views = 1;
-        res.send("Welcome! First visit <br><a href='/'>Refresh</a>");
+        res.send("Welcome! First visit");
     }
 });
 
-// Logout route
+// destroy session
 app.get('/logout', (req, res) => {
     req.session.destroy(() => {
-        res.send("Session Ended");
+        res.send("Session ended");
     });
 });
 

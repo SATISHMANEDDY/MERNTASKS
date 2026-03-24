@@ -1,26 +1,37 @@
 const express = require('express');
+const bodyParser = require('body-parser');
+
 const app = express();
+const PORT = 3000;
 
-app.set('view engine', 'ejs');
+// Middleware to read form data
+app.use(bodyParser.urlencoded({ extended: true }));
 
+// Form page
 app.get('/', (req, res) => {
-    res.render('index', {
-        name: "Manikanta",
-        course: "MERN Stack"
-    });
+    res.send(`
+        <h2>Student Form</h2>
+        <form method="POST" action="/submit">
+            Name: <input type="text" name="name" required><br><br>
+            Email: <input type="email" name="email" required><br><br>
+            Course: <input type="text" name="course" required><br><br>
+            <button type="submit">Submit</button>
+        </form>
+    `);
 });
 
-app.listen(3000, () => {
-    console.log("Server running on http://localhost:3000");
-});
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Templating Example</title>
-</head>
+// Handle form data
+app.post('/submit', (req, res) => {
+    const { name, email, course } = req.body;
 
-<body>
-    <h1>Welcome <%= name %></h1>
-    <h2>Course: <%= course %></h2>
-</body>
-</html>
+    res.send(`
+        <h2>Form Submitted Successfully</h2>
+        Name: ${name} <br>
+        Email: ${email} <br>
+        Course: ${course}
+    `);
+});
+
+app.listen(PORT, () => {
+    console.log(`Server running on http://localhost:${PORT}`);
+});

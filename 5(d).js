@@ -1,26 +1,16 @@
-const http = require('http');
+const fs = require('fs');
+const path = require('path');
 
-const options = {
-    hostname: 'localhost',
-    port: 3000,
-    path: '/',
-    method: 'GET'
-};
+// Create file in same folder
+const filePath = path.join(__dirname, 'src.txt');
 
-const req = http.request(options, (res) => {
-    let data = '';
+const content = "HTML, CSS, JavaScript, TypeScript, MongoDB, Express.js, React.js, Node.js";
 
-    res.on('data', (chunk) => {
-        data += chunk;
-    });
-
-    res.on('end', () => {
-        console.log('Received from server:', data);
-    });
+// Write file
+fs.writeFile(filePath, content, (err) => {
+    if (err) {
+        console.error("Error:", err);
+    } else {
+        console.log("src.txt file created successfully");
+    }
 });
-
-req.on('error', (error) => {
-    console.error(error);
-});
-
-req.end();

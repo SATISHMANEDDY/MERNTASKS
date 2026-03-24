@@ -1,21 +1,19 @@
-import { useState } from "react";
-
-function App() {
-  const [count, setCount] = useState(0);
-
+function Child(props) {
   return (
     <div>
-      <h1>React Hooks Example</h1>
+      <h2>Student Name: {props.name}</h2>
+      <h3>Course: {props.course}</h3>
+    </div>
+  );
+}
 
-      <h2>Counter: {count}</h2>
+function App() {
+  return (
+    <div>
+      <h1>Sharing Data Between Components</h1>
 
-      <button onClick={() => setCount(count + 1)}>
-        Increase
-      </button>
+      <Child name="Manikanta" course="ReactJS" />
 
-      <button onClick={() => setCount(count - 1)}>
-        Decrease
-      </button>
     </div>
   );
 }

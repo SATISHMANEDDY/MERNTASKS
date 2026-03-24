@@ -2,35 +2,40 @@ const express = require('express');
 const app = express();
 const PORT = 3000;
 
-// Basic Route
-app.get('/', (req, res) => {
-    res.send('Welcome to ExpressJS Routing');
+app.use(express.json()); // to read JSON data
+
+let items = [];  // temporary storage
+
+// POST → Add data
+app.post('/items', (req, res) => {
+    const item = req.body;
+
+    if (!item || Object.keys(item).length === 0) {
+        return res.status(400).send('Invalid data');
+    }
+
+    items.push(item);
+    res.send('Item added successfully');
 });
 
-// Route Parameter
-app.get('/student/:id', (req, res) => {
-    res.send(`Student ID: ${req.params.id}`);
+// GET → Retrieve all data
+app.get('/items', (req, res) => {
+    res.json(items);
 });
 
-// Multiple Route Parameters
-app.get('/course/:name/:duration', (req, res) => {
-    const { name, duration } = req.params;
-    res.send(`Course: ${name}, Duration: ${duration}`);
+// DELETE → Delete specific item by index
+app.delete('/items/:index', (req, res) => {
+    const index = parseInt(req.params.index);
+
+    if (isNaN(index) || index < 0 || index >= items.length) {
+        return res.status(400).send('Invalid index');
+    }
+
+    items.splice(index, 1);
+    res.send('Item deleted successfully');
 });
 
-// Query Parameters
-app.get('/search', (req, res) => {
-    const { subject, level } = req.query;
-    res.send(`Subject: ${subject}, Level: ${level}`);
-});
-
-// URL Building
-app.get('/build-url', (req, res) => {
-    const url = `/student/101?role=monitor`;
-    res.send(`Generated URL: ${url}`);
-});
-
-// Start Server
+// Start server
 app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
 });

@@ -1,21 +1,17 @@
-import { useState } from "react";
-
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const students = ["Manikanta", "Ravi", "Kiran", "Suresh"];
 
   return (
     <div>
-      <h1>Conditional Rendering Example</h1>
+      <h1>Rendering List Example</h1>
 
-      {isLoggedIn ? (
-        <h2>Welcome Manikanta!</h2>
-      ) : (
-        <h2>Please Login</h2>
-      )}
+      <ul>
+        {students.map((student, index) => (
+          <li key={index}>{student}</li>
+        ))}
+      </ul>
 
-      <button onClick={() => setIsLoggedIn(!isLoggedIn)}>
-        Toggle Login
-      </button>
     </div>
   );
 }

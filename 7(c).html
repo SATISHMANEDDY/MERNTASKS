@@ -1,41 +1,22 @@
-const express = require('express');
-const app = express();
-const PORT = 3000;
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home Page</title>
+    <style>
+        body {
+            background-color: lightblue;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+</head>
 
-app.use(express.json()); // to read JSON data
+<body>
 
-let items = [];  // temporary storage
+    <h1>Welcome to Express EJS Templating</h1>
 
-// POST → Add data
-app.post('/items', (req, res) => {
-    const item = req.body;
+    <h2>User Details:</h2>
+    <p>Name: <%= user.name %></p>
+    <p>Course: <%= user.course %></p>
 
-    if (!item || Object.keys(item).length === 0) {
-        return res.status(400).send('Invalid data');
-    }
-
-    items.push(item);
-    res.send('Item added successfully');
-});
-
-// GET → Retrieve all data
-app.get('/items', (req, res) => {
-    res.json(items);
-});
-
-// DELETE → Delete specific item by index
-app.delete('/items/:index', (req, res) => {
-    const index = parseInt(req.params.index);
-
-    if (isNaN(index) || index < 0 || index >= items.length) {
-        return res.status(400).send('Invalid index');
-    }
-
-    items.splice(index, 1);
-    res.send('Item deleted successfully');
-});
-
-// Start server
-app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
-});
+</body>
+</html>

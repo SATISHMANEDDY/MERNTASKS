@@ -1,13 +1,30 @@
-function App() {
+import { useState } from "react";
 
-  const name = "Manikanta";
-  const marks = 85;
+// Student Component (Props)
+function Student(props) {
+  return (
+    <div>
+      <h2>Name: {props.name}</h2>
+      <h3>Marks: {props.marks}</h3>
+    </div>
+  );
+}
+
+// Main App Component (State)
+function App() {
+  const [count, setCount] = useState(0);
 
   return (
     <div>
-      <h1>Hello {name}</h1>
-      <h2>Your Marks: {marks}</h2>
-      <h3>{marks > 50 ? "Pass" : "Fail"}</h3>
+      <h1>Props and State Example</h1>
+
+      <Student name="Manikanta" marks={90} />
+
+      <h2>Counter: {count}</h2>
+
+      <button onClick={() => setCount(count + 1)}>
+        Increase
+      </button>
     </div>
   );
 }
